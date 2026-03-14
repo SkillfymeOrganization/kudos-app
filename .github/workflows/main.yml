@@ -14,4 +14,12 @@ jobs:
       - run: npm run lint
       - run: npm run test:ci
       - run: npm run build
+      - name: Install docker 
+        uses: docker/setup-buildx-action@v3
+      - name: Build dockerfile and push Image
+        uses: docker/build-push-action@v6
+        with:
+         context: .    # path where dockerfile is- which is curent directory
+         tags: sonal04/myimage01  # name of the image
+         push: true
   
